@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sneh Desai - Student Resume</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Segoe+UI:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset + Base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: #4f46e5;
+            color: white;
+            padding: 20px 0;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-family: 'Pacifico', cursive;
+            font-size: 3em;
+            letter-spacing: 1px;
+            line-height: 1.4;
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(to right, #ffffff, #fef7ed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+            transform: rotate(-2deg);
+            animation: moveText 3s ease infinite;
+        }
+
+        @keyframes moveText {
+            0% { transform: rotate(-2deg); }
+            50% { transform: rotate(2deg); }
+            100% { transform: rotate(-2deg); }
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Posts */
+        .post {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 5px solid #4f46e5;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .post:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+
+        .post h2 {
+            margin-bottom: 15px;
+            color: #4f46e5;
+            font-size: 1.5em;
+        }
+
+        .post h3 {
+            color: #4f46e5;
+            margin-bottom: 10px;
+            margin-top: 15px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: #ddd;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+
+        .post a {
+            display: inline-block;
+            background-color: #4f46e5;
+            color: white;
+            padding: 4px 10px;
+            text-decoration: none;
+            font-weight: 500;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .post a:hover {
+            background-color: #3730a3;
+        }
+
+        /* Custom styles for resume */
+        .profile-header {
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .profile-header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            animation: none;
+            transform: none;
+            background: none;
+            -webkit-text-fill-color: white;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .contact-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            border-radius: 6px;
+            text-align: left;
+        }
+
+        .grades-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .grade-item {
+            background: #f8fafc;
+            padding: 12px;
+            border-radius: 6px;
+            border-left: 3px solid #4f46e5;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .grade-badge {
+            background: #4f46e5;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            font-weight: bold;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .skill-tag {
+            background: #e0e7ff;
+            color: #4f46e5;
+            padding: 8px 12px;
+            border-radius: 20px;
+            text-align: center;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: #4f46e5;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .project-card {
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            border-color: #4f46e5;
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.1);
+        }
+
+        .achievement-badge {
+            display: inline-block;
+            background: linear-gradient(45deg, #10b981, #059669);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+            margin: 5px 5px 5px 0;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #fef3c7 0%, #fef3c7 100%);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .profile-header h1 {
+                font-size: 2em;
+            }
+            
+            .grades-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            nav {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Profile Header -->
+        <div class="profile-header">
+            <h1>SNEH DESAI</h1>
+            <p style="font-size: 1.2em; margin-bottom: 20px;">B.E. Computer Science Student, BITS Pilani</p>
+        <a href="/" class="achievement-badge">Home</a>
+<br>
+            <div class="achievement-badge">CGPA: 10.0</div>
+            <div class="achievement-badge">Student ID: 2023A7PS0498P</div>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <strong>📧 Email:</strong><br>
+                    f20230498@pilani.bits-pilani.ac.in
+                    desaisnehp@gmail.com
+                </div>
+                <div class="contact-item">
+                    <strong>📱 Phone:</strong><br>
+                    8320835120
+                </div>
+                <div class="contact-item">
+                    <strong>🎂 DOB:</strong><br>
+                    05-04-2005
+                </div>
+                
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <header>
+            <nav>
+                <a href="#academics">📚 Academics</a>
+                <a href="#projects">🚀 Projects</a>
+                <a href="#skills">💻 Skills</a>
+                <a href="#activities">🏆 Activities</a>
+                <a href="#interests">🎯 Interests</a>
+            </nav>
+        </header>
+
+        <!-- Academic Credentials -->
+        <div class="post" id="academics">
+            <h2>🎓 Academic Credentials</h2>
+            <p>Outstanding academic performance across <span class="highlight">29 courses</span> with perfect CGPA of <span class="highlight">10.0</span></p>
+            
+            <div class="grades-grid">
+                <div class="grade-item">
+                    <span>BIOLOGY LABORATORY</span>
+                    <span class="grade-badge">A</span>
+                </div>
+                <div class="grade-item">
+                    <span>COMPUTER PROGRAMMING</span>
+                    <span class="grade-badge">A</span>
+                </div>
+                <div class="grade-item">
+                    <span>DATA STRUCTURES & ALGO</span>
+                    <span class="grade-badge">A</span>
+                </div>
+                <div class="grade-item">
+                    <span>DERIVATIVES & RISK MGMT</span>
+                    <span class="grade-badge">A</span>
+                </div>
+                <div class="grade-item">
+                    <span>DISCRETE STRUCTURES FOR COMP SCI</span>
+                    <span class="grade-badge">A</span>
+                </div>
+                <div class="grade-item">
+                    <span>ENGINEERING GRAPHICS</span>
+                    <span class="grade-badge">A</span>
+                </div>
+                <div class="grade-item">
+                    <span>FUNDAMENTALS OF FIN AND ACCOUNT</span>
+                    <span class="grade-badge">A</span>
+                </div>
+                <div class="grade-item">
+                    <span>GENERAL CHEMISTRY</span>
+                    <span class="grade-badge">A</span>
+                </div>
+                <div class="grade-item">
+                    <span>MATHEMATICS I, II, III</span>
+                    <span class="grade-badge">A</span>
+                </div>
+                <div class="grade-item">
+                    <span>MICROPROCESSOR & INTERFACING</span>
+                    <span class="grade-badge">A</span>
+                </div>
+                <div class="grade-item">
+                    <span>OBJECT ORIENTED PROGRAMMING</span>
+                    <span class="grade-badge">A</span>
+                </div>
+                <div class="grade-item">
+                    <span>PROBABILITY & STATISTICS</span>
+                    <span class="grade-badge">A</span>
+                </div>
+                <div class="grade-item">
+                    <span>DATABASE SYSTEMS</span>
+                    <span class="grade-badge">A</span>
+                </div>
+                <div class="grade-item">
+                    <span>DIGITAL DESIGN</span>
+                    <span class="grade-badge">A</span>
+                </div>
+                <div class="grade-item">
+                    <span>LOGIC IN COMPUTER SCIENCE</span>
+                    <span class="grade-badge">A</span>
+                </div>
+                <div class="grade-item">
+                    <span>SYMBOLIC LOGIC</span>
+                    <span class="grade-badge">A</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Projects -->
+        <div class="post" id="projects">
+            <h2>🚀 Projects & Research</h2>
+            
+            <div class="project-card">
+                <h3>🌐 Student ERP Website</h3>
+                <p><strong>Technology:</strong> UPPAL Model Checker</p>
+                <p><strong>Course:</strong> Logic in Computer Science</p>
+                <p><strong>Supervisor:</strong> Dr. Jagat Sesh Challa</p>
+                <p>Developed a comprehensive student management system using formal verification techniques.</p>
+            </div>
+
+            <div class="project-card">
+                <h3>⚖️ Role of Logic in Legal Matters</h3>
+                <p><strong>Research Area:</strong> Symbolic Logic Applications</p>
+                <p><strong>Course:</strong> Symbolic Logic</p>
+                <p><strong>Supervisor:</strong> Dr. Anupam Yadav</p>
+                <p>Explored the intersection of formal logic and legal reasoning systems.</p>
+            </div>
+
+            <div class="project-card">
+                <h3>🤖 Sonar Signal Classification</h3>
+                <p><strong>Technology:</strong> Machine Learning (Supervised Learning)</p>
+                <p><strong>Objective:</strong> Rock vs Mine Detection</p>
+                <p>Implemented ML algorithms to classify sonar signals with high accuracy for underwater object detection.</p>
+            </div>
+        </div>
+
+        <!-- Skills -->
+        <div class="post" id="skills">
+            <h2>💻 Technical Skills</h2>
+            
+            <h3>Programming Languages</h3>
+            <div class="skills-grid">
+                <div class="skill-tag">C/C++</div>
+                <div class="skill-tag">Python</div>
+                <div class="skill-tag">Java</div>
+                <div class="skill-tag">Verilog</div>
+                <div class="skill-tag">Assembly Language</div>
+            </div>
+
+            <h3>Technologies & Frameworks</h3>
+            <div class="skills-grid">
+                <div class="skill-tag">Data Structures & Algorithms</div>
+                <div class="skill-tag">MySQL</div>
+                <div class="skill-tag">Machine Learning</div>
+                <div class="skill-tag">Web Development</div>
+                <div class="skill-tag">HTML/CSS/JavaScript</div>
+            </div>
+
+            <h3>Tools & Software</h3>
+            <div class="skills-grid">
+                <div class="skill-tag">UPPAL Model Checker</div>
+                <div class="skill-tag">DosBox MASM</div>
+                <div class="skill-tag">MS Office Suite</div>
+                <div class="skill-tag">Digital Design Tools</div>
+            </div>
+        </div>
+
+        <!-- Activities -->
+        <div class="post" id="activities">
+            <h2>🏆 Co-Curricular & Extra-Curricular Activities</h2>
+            
+            <h3>Leadership Roles</h3>
+            <div class="project-card">
+                <h4>👥 Student-Faculty Committee (CSIS)</h4>
+                <p>Active member contributing to academic policy discussions and student welfare initiatives.</p>
+            </div>
+
+            <div class="project-card">
+                <h4>🎓 PMP Mentor</h4>
+                <p>Mentoring junior students in academic and personal development programs.</p>
+            </div>
+
+            <h3>Club Activities</h3>
+            <div class="project-card">
+                <h4>🧩 Core Team Member - Cubing and Puzzling Club</h4>
+                <p>Organized competitive Rubik's Cube events and coordinated freestyle puzzle-solving competitions, ensuring smooth execution and high participant engagement.</p>
+            </div>
+
+            <div class="project-card">
+                <h4>🎭 Core Organizing Team - Gurjari Cultural Association</h4>
+                <p>Key role in planning and executing university-level cultural festivals, managing logistics and coordinating events to promote regional heritage.</p>
+            </div>
+
+            <h3>Other Activities</h3>
+            <div class="skills-grid">
+                <div class="skill-tag">Competitive Programming</div>
+                <div class="skill-tag">Novel Reading</div>
+            </div>
+        </div>
+
+        <!-- Professional Interests -->
+        <div class="post" id="interests">
+            <h2>🎯 Professional Interests & Objectives</h2>
+            
+            <div class="project-card">
+                <h3>💻 Software Development</h3>
+                <p>Passionate about problem-solving, coding, and building innovative applications with a focus on creating efficient, scalable solutions.</p>
+            </div>
+
+            <div class="project-card">
+                <h3>💰 Financial Management</h3>
+                <p>Enthusiastic about investment strategies, financial analysis, and market trends with strong analytical skills.</p>
+            </div>
+
+            <h3>Key Strengths</h3>
+            <div class="skills-grid">
+                <div class="skill-tag">Strong Logical Reasoning</div>
+                <div class="skill-tag">Excellent Mathematical Acumen</div>
+                <div class="skill-tag">Problem-Solving Mindset</div>
+                <div class="skill-tag">Team Leadership</div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2025 Sneh Desai | BITS Pilani | Portfolio</p>
+            <p>📧 desaisnehp@gmail.com | 📱 8320835120</p>
+        </footer>
+    </div>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add hover effects to grade items
+        document.querySelectorAll('.grade-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.02)';
+                this.style.transition = 'transform 0.3s ease';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+            });
+        });
+
+        // Interactive skill tags
+        document.querySelectorAll('.skill-tag').forEach(skill => {
+            skill.addEventListener('click', function() {
+                this.style.animation = 'pulse 0.6s ease-in-out';
+                setTimeout(() => {
+                    this.style.animation = '';
+                }, 600);
+            });
+        });
+
+        // Add pulse animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes pulse {
+                0% { transform: scale(1); }
+                50% { transform: scale(1.1); }
+                100% { transform: scale(1); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Progress indicator for scrolling
+        window.addEventListener('scroll', () => {
+            const scrollProgress = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+            document.body.style.background = `linear-gradient(to right, #4f46e5 ${scrollProgress}%, #f5f5f5 ${scrollProgress}%)`;
+            document.body.style.backgroundSize = '100% 4px';
+            document.body.style.backgroundRepeat = 'no-repeat';
+        });
+    </script>
+</body>
+</html>

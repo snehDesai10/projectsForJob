@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sneh Desai's Blog</title>
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>Sneh Desai's Blog</h1>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    {% for post in posts reversed %}
+    <section class="post">
+      <a href="/post/{{post.id}}">
+      <h2>{{post.title}}</h2>
+      <h5>{{post.toc}}</h5>
+      <p>{{post.body|truncatewords:30}}</p>
+    </a>
+    </section>
+    {% endfor %}
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Sneh Desai's Blog. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
